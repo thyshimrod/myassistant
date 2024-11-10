@@ -54,15 +54,13 @@ def takeCommand():
         return statement
 
 
-
-
 if __name__=='__main__':
     wishMe()
     
 
 
     while True:
-        speak("Tell me how can I help you now?")
+        # speak("Tell me how can I help you now?")
         statement = takeCommand().lower()
         if "good bye" in statement or "ok bye" in statement or "stop" in statement:
             speak('your personal assistant G-one is shutting down,Good bye')
