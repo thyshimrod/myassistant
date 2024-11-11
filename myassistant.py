@@ -2,6 +2,7 @@
 import speech_recognition as sr
 import pyttsx3
 from inspiration import Inspiration
+from autohypnose import Autohypnose
 import pygame
 from win32gui import SetWindowPos
 import win32gui
@@ -14,9 +15,16 @@ class Myassistant:
         self.recognizer=sr.Recognizer()
         self.engine=pyttsx3.init('sapi5')
         self.voices=self.engine.getProperty('voices')
-        self.engine.setProperty('voice','voices[0].id')
-        self.rate = 150
+        self.engine.setProperty('voice',self.voices[2].id)
+        self.rate = 130
         self.engine.setProperty('rate',self.rate)
+        # voices = self.engine.getProperty('voices')
+        # for voice in voices:
+        #     print(voice, voice.id)
+        #     self.engine.setProperty('voice', voice.id)
+        #     self.engine.say("Hello World!")
+        #     self.engine.runAndWait()
+        #     self.engine.stop()
         pygame.init()
         screen_width = 200
         screen_height = 200
@@ -59,6 +67,7 @@ class Myassistant:
             self.window_screen.fill((255,0,128)) 
             Mood.get_instance().loop()
             Mood.get_instance().render(self.window_screen)
+            Autohypnose.get_instance().loop(self.engine)
             pygame.display.update()
             
             # command = self.take_command().lower()
