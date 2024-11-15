@@ -23,7 +23,7 @@ class Mood:
     
     def loop(self):
         dt = (int(time.time() * 1000)) - self.last_mood
-        if dt > 1500:
+        if dt > 5000:
             time_to_change = random.randint(0,10)
             if time_to_change > 5:
                 self.state = random.randint(0,len(self.files)-1)
