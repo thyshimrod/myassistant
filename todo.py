@@ -3,12 +3,11 @@ import time
 import os
 from os import listdir
 from os.path import isfile, join
+from timestampassistant import timestamp_assistant
 
 
 class Todo:
     instance = None
-    def __init__(self):
-        self.last_todo = int(time.time() * 1000)
         
     @staticmethod
     def get_instance():
@@ -40,9 +39,9 @@ class Todo:
 
     
     def loop(self,speaker):
-        dt = (int(time.time() * 1000)) - self.last_todo
+        dt = (int(time.time() * 1000)) - timestamp_assistant.get_timestamp()
         if dt > 50000:
-            self.last_todo = int(time.time() * 1000)
+            timestamp_assistant.set_timestamp(int(time.time() * 1000))
             time_to_speak = random.randint(0,10)
             if time_to_speak > 7:
                 categorie = random.randint(0,2)
@@ -52,7 +51,8 @@ class Todo:
                     text = self.get_explorations()
                 elif categorie == 2:
                     text = self.get_video()
-                voices=speaker.getProperty('voices')
-                speaker.setProperty('voice',voices[1].id)
+                # voices=speaker.getProperty('voices')
+                # speaker.setProperty('voice',voices[1].id)
                 speaker.say(text)
                 speaker.runAndWait()
+                print("todo")

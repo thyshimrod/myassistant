@@ -10,13 +10,14 @@ import win32con
 import win32api
 from mood import Mood
 from todo import Todo
+from recurrent import Recurrent
 
 class Myassistant:
     def __init__(self):
         self.recognizer=sr.Recognizer()
         self.engine=pyttsx3.init('sapi5')
         self.voices=self.engine.getProperty('voices')
-        self.engine.setProperty('voice',self.voices[2].id)
+        self.engine.setProperty('voice',self.voices[3].id)
         self.rate = 130
         self.engine.setProperty('rate',self.rate)
         # voices = self.engine.getProperty('voices')
@@ -71,6 +72,7 @@ class Myassistant:
             Autohypnose.get_instance().loop(self.engine)
             Inspiration.get_instance().loop(self.engine)
             Todo.get_instance().loop(self.engine)
+            Recurrent.get_instance().loop(self.engine)
             pygame.display.update()
             
             # command = self.take_command().lower()
