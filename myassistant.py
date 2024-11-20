@@ -69,6 +69,7 @@ class Myassistant:
             Mood.get_instance().loop()
             Mood.get_instance().render(self.window_screen)
             Autohypnose.get_instance().loop(self.engine)
+            Inspiration.get_instance().loop(self.engine)
             Todo.get_instance().loop(self.engine)
             pygame.display.update()
             

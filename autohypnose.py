@@ -47,5 +47,7 @@ class Autohypnose:
             time_to_speak = random.randint(0,10)
             if time_to_speak > 5:
                 sentence = random.randint(0,len(self.sentences)-1)
+                voices=speaker.getProperty('voices')
+                speaker.setProperty('voice',voices[2].id)
                 speaker.say(self.sentences[sentence])
                 speaker.runAndWait()
