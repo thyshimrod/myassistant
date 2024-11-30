@@ -4,6 +4,7 @@ import pyttsx3
 from inspiration import Inspiration
 from autohypnose import Autohypnose
 import pygame
+import random
 from win32gui import SetWindowPos
 import win32gui
 import win32con
@@ -11,6 +12,8 @@ import win32api
 from mood import Mood
 from todo import Todo
 from recurrent import Recurrent
+from timestampassistant import timestamp_assistant
+import time
 
 class Myassistant:
     def __init__(self):
@@ -69,10 +72,22 @@ class Myassistant:
             self.window_screen.fill((255,0,128)) 
             Mood.get_instance().loop()
             Mood.get_instance().render(self.window_screen)
-            Autohypnose.get_instance().loop(self.engine)
-            Inspiration.get_instance().loop(self.engine)
-            Todo.get_instance().loop(self.engine)
-            Recurrent.get_instance().loop(self.engine)
+            dt = (int(time.time() * 1000)) - timestamp_assistant.get_timestamp()
+            if dt > 50000:
+                timestamp_assistant.set_timestamp(int(time.time() * 1000))
+                categorie = random.randint(0,3)
+                if categorie == 0:
+                    Autohypnose.get_instance().loop(self.engine)
+                elif categorie == 1:
+                    Inspiration.get_instance().loop(self.engine)
+                elif categorie == 2:
+                    Todo.get_instance().loop(self.engine)
+                elif categorie == 2:
+                    Recurrent.get_instance().loop(self.engine)
+            # Autohypnose.get_instance().loop(self.engine)
+            # Inspiration.get_instance().loop(self.engine)
+            # Todo.get_instance().loop(self.engine)
+            # Recurrent.get_instance().loop(self.engine)
             pygame.display.update()
             
             # command = self.take_command().lower()

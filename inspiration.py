@@ -1,5 +1,5 @@
 import random
-import time
+from timestampassistant import timestamp_assistant
 
 class Inspiration:
     instance = None
@@ -29,10 +29,6 @@ class Inspiration:
            "J'affirme qu'il ya une dimension spirituelle à ma vie",
            "J'affirme que je suis profondément reconnaissant d'être en vie"]
 
-    def __init__(self):
-        self.last_sentence = int(time.time() * 1000)
-        
-
     @staticmethod
     def get_instance():
         if Inspiration.instance == None:
@@ -40,14 +36,12 @@ class Inspiration:
         return Inspiration.instance
     
     def loop(self,speaker):
-        dt = (int(time.time() * 1000)) - self.last_sentence
-        if dt > 50000:
-            self.last_sentence = int(time.time() * 1000)
-            time_to_speak = random.randint(0,10)
-            if time_to_speak > 5:
-                sentence = random.randint(0,len(Inspiration.phrases)-1)
-                # voices=speaker.getProperty('voices')
-                # speaker.setProperty('voice',voices[3].id)
-                speaker.say(Inspiration.phrases[sentence])
-                speaker.runAndWait()
-                print("inspiration")
+        time_to_speak = random.randint(0,10)
+        print("inspi" + str(time_to_speak))
+        if time_to_speak > 5:
+            sentence = random.randint(0,len(Inspiration.phrases)-1)
+            # voices=speaker.getProperty('voices')
+            # speaker.setProperty('voice',voices[3].id)
+            speaker.say(Inspiration.phrases[sentence])
+            speaker.runAndWait()
+            print("inspiration")

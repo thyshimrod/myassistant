@@ -6,7 +6,7 @@ class timestamp_assistant:
         return timestamp_assistant.timestamp
     
     @staticmethod
-    def set_timestamp(timestamp)
+    def set_timestamp(timestamp):
         timestamp_assistant.timestamp = timestamp
 
 

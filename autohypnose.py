@@ -1,11 +1,9 @@
 import random
-import time
 from timestampassistant import timestamp_assistant
 
 class Autohypnose:
     instance = None
     def __init__(self):
-        self.last_sentence = int(time.time() * 1000)
         self.sentences = ["Je suis digne de vivre une vie heureuse saine et épanouie",
                          "Je prends l engagement de faire au mieux avec moi même en toute situation",
                           "Merci",
@@ -42,14 +40,12 @@ class Autohypnose:
         return Autohypnose.instance
 
     def loop(self,speaker):
-        dt = (int(time.time() * 1000)) - self.last_sentence
-        if dt > 50000:
-            self.last_sentence = int(time.time() * 1000)
-            time_to_speak = random.randint(0,10)
-            if time_to_speak > 5:
-                sentence = random.randint(0,len(self.sentences)-1)
-                # voices=speaker.getProperty('voices')
-                # speaker.setProperty('voice',voices[1].id)
-                speaker.say(self.sentences[sentence])
-                speaker.runAndWait()
-                print("autohypnose")
+          time_to_speak = random.randint(0,10)
+          print("hypnose" + str(time_to_speak))
+          if time_to_speak > 5:
+              sentence = random.randint(0,len(self.sentences)-1)
+              # voices=speaker.getProperty('voices')
+              # speaker.setProperty('voice',voices[1].id)
+              speaker.say(self.sentences[sentence])
+              speaker.runAndWait()
+              print("autohypnose")

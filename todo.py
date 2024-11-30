@@ -1,5 +1,4 @@
 import random
-import time
 import os
 from os import listdir
 from os.path import isfile, join
@@ -39,20 +38,18 @@ class Todo:
 
     
     def loop(self,speaker):
-        dt = (int(time.time() * 1000)) - timestamp_assistant.get_timestamp()
-        if dt > 50000:
-            timestamp_assistant.set_timestamp(int(time.time() * 1000))
-            time_to_speak = random.randint(0,10)
-            if time_to_speak > 7:
-                categorie = random.randint(0,2)
-                if categorie == 0:
-                    text = self.get_exploration_perso()
-                elif categorie == 1:
-                    text = self.get_explorations()
-                elif categorie == 2:
-                    text = self.get_video()
-                # voices=speaker.getProperty('voices')
-                # speaker.setProperty('voice',voices[1].id)
-                speaker.say(text)
-                speaker.runAndWait()
-                print("todo")
+        time_to_speak = random.randint(0,10)
+        print("todo" + str(time_to_speak))
+        if time_to_speak > 7:
+            categorie = random.randint(0,2)
+            if categorie == 0:
+                text = self.get_exploration_perso()
+            elif categorie == 1:
+                text = self.get_explorations()
+            elif categorie == 2:
+                text = self.get_video()
+            # voices=speaker.getProperty('voices')
+            # speaker.setProperty('voice',voices[1].id)
+            speaker.say(text)
+            speaker.runAndWait()
+            print("todo")
