@@ -28,12 +28,12 @@ class Todo:
     
     def get_video(self):
         nbfile, file_name = self.get_random_file_from_directory_and_nb_files('C:\\pascal\\pogideaverse\\Efforts\\Evideos')
-        text =  "Tu as " + str(nbfile) + "videos  à faire. Et par exemple " + file_name
+        text =  "Tu as " + str(nbfile) + "videos à faire. Et par exemple " + file_name
         return text
 
     def get_explorations(self):
         nbfile, file_name = self.get_random_file_from_directory_and_nb_files('C:\\pascal\\pogideaverse\\Efforts\\Explorations')
-        text =  "Tu as " + str(nbfile) + "videos  à faire. Et par exemple " + file_name
+        text =  "Tu as " + str(nbfile) + "Explorations à faire. Et par exemple " + file_name
         return text
 
     
